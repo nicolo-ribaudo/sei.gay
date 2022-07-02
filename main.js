@@ -3,9 +3,24 @@ $envelope.addEventListener("click", () => {
   $envelope.classList.toggle("open");
 });
 
-const name = new URLSearchParams(location.search).get("n");
+const params = new URLSearchParams(location.search);
+
+const name = params.get("n");
 if (name) {
   document.querySelectorAll("[data-template='name']").forEach(($el) => {
     $el.textContent = ` ${name}`;
   });
 }
+
+const flag = params.get("f");
+if (flag) {
+  document.querySelectorAll("[data-template='flag']").forEach(($el) => {
+    $el.textContent = `${flag}`;
+    $el.style.fontSize = `min(5em, ${15 / flag.length}em)`;
+    try {
+      $el.classList.add(`flag-${flag}`);
+    } catch {}
+  });
+}
+
+console.log(name, flag);
