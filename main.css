@@ -301,13 +301,18 @@ body {
   width: 100%;
   height: 200%;
 }
-
 .letter-top,
 .letter-bottom {
   overflow: hidden;
 }
 .letter-bottom .letter-contents {
   transform: translateY(-50%);
+}
+
+.letter-contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*****************************************************************************\
