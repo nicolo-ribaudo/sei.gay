@@ -380,6 +380,11 @@ body {
     #f9fbfc 100%
   );
 }
+.flag-straight,
+.flag-etero {
+  background-image: none;
+  color: saddlebrown;
+}
 
 /*****************************************************************************\
  *                                OTHER                                      *

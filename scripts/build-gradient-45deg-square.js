@@ -52,3 +52,10 @@ generate("trans", [
   { color: "#f587ac", at: 75 },
   { color: "#4fa5c2", at: 100 },
 ]);
+// Sad, I discriminate straights
+console.log(`\
+.flag-straight, .flag-etero {
+  background-image: none;
+  color: saddlebrown;
+}
+`);
