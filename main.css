@@ -32,7 +32,7 @@
   );
 }
 
-@media (max-width: 500px) {
+@media (max-width: 500px) or (max-height: 750px) {
   :root {
     font-size: 0.5em;
   }
@@ -218,7 +218,7 @@ body {
   perspective: var(--perspective);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 500px) or (max-height: 750px) {
   .letter {
     top: 2%;
     bottom: 2%;
