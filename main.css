@@ -380,6 +380,20 @@ body {
     #f9fbfc 100%
   );
 }
+.flag-bi {
+  background-image: linear-gradient(
+    45deg,
+    #d60270 0%,
+    #0038a8 12.5%,
+    #d60270 25%,
+    #0038a8 37.5%,
+    #d60270 50%,
+    #0038a8 62.5%,
+    #d60270 75%,
+    #0038a8 87.5%,
+    #d60270 100%
+  );
+}
 .flag-straight,
 .flag-etero {
   background-image: none;

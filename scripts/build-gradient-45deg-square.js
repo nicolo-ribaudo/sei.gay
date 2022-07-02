@@ -45,6 +45,13 @@ generate("rainbow", [
   { color: "#675997", at: 83 },
   { color: "#d04b36", at: 100 },
 ]);*/
+generate("bi", [
+  { color: "#d60270", at: 0 },
+  { color: "#0038a8", at: 25 },
+  { color: "#d60270", at: 50 },
+  { color: "#0038a8", at: 75 },
+  { color: "#d60270", at: 100 },
+]);
 generate("trans", [
   { color: "#4fa5c2", at: 0 },
   { color: "#f587ac", at: 25 },
