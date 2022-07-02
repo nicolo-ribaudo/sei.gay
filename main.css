@@ -8,6 +8,34 @@
 
   --envelope-message-color: black;
   --envelope-message-font-size: 3em;
+
+  --letter-color: rgb(255, 245, 217);
+  --letter-text-color: black;
+
+  --letter-transition-up-duration: 1s;
+  --letter-transition-up-delay: calc(
+    var(--letter-transition-up-duration) * 0.3
+  );
+
+  --letter-transition-unfold-duration: 1s;
+  --letter-transition-unfold-delay: calc(
+    var(--letter-transition-up-delay) + var(--letter-transition-up-duration)
+  );
+
+  --letter-transition-down-delay: calc(
+    var(--letter-transition-unfold-duration) * 0.3
+  );
+
+  --envelope-transition-close-delay: calc(
+    var(--letter-transition-down-delay) + var(--letter-transition-up-duration) *
+      0.7
+  );
+}
+
+@media (max-width: 500px) {
+  :root {
+    font-size: 0.8em;
+  }
 }
 
 html,
@@ -38,18 +66,21 @@ body {
 
 .envelope {
   --aspect-ratio: 5 / 3;
-  --width: min(
+  --envelope-width: min(
     var(--envelope-max-width),
     calc(var(--envelope-max-height) * var(--aspect-ratio))
   );
-  width: var(--width);
+  width: var(--envelope-width);
   aspect-ratio: var(--aspect-ratio);
-
-  perspective: calc(3 * var(--width));
   position: relative;
+
   cursor: pointer;
 
-  transform: translateY(100px);
+  --perspective: calc(4 * var(--envelope-width));
+  perspective: var(--perspective);
+
+  --envelope-translate-y: 20%;
+  transform: translateY(var(--envelope-translate-y));
 }
 
 /**
@@ -115,23 +146,11 @@ body {
   z-index: 4;
 }
 
-.letter {
-  position: absolute;
-  top: 10%;
-  bottom: 10%;
-  left: 10%;
-  right: 10%;
-  z-index: 2;
-
-  background: orange;
-
-  filter: drop-shadow(0px 0px 2px rgba(50, 50, 0, 0.5));
-}
-
 /**
  * Open Envelope
  */
-.envelope.open .envelope-container-top {
+
+.open .envelope-container-top {
   --shadow-size: 0.5px;
   z-index: 1;
   transform: rotateX(180deg);
@@ -145,10 +164,16 @@ body {
 .envelope-container-top {
   transform-origin: top center;
 
-  transition: transform var(--envelope-transition-duration),
-    filter var(--envelope-transition-duration),
-    z-index var(--envelope-transition-duration) step-start
-      calc(var(--envelope-transition-duration) / 3);
+  transition-property: transform, filter, z-index;
+  transition-duration: var(--envelope-transition-duration);
+  transition-timing-function: default, default, step-start;
+  transition-delay: var(--envelope-transition-close-delay),
+    var(--envelope-transition-close-delay),
+    calc(var(--envelope-transition-close-delay));
+}
+
+.open .envelope-container-top {
+  transition-delay: 0s, 0s, var(--envelope-transition-duration) * 0.3;
 }
 
 .envelope-top-backface {
@@ -170,16 +195,114 @@ body {
  *                                LETTER                                     *
 \*****************************************************************************/
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.letter {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  z-index: 2;
+
+  background: orange;
+  filter: drop-shadow(0px 0px 2px rgba(50, 50, 0, 0.5));
+
+  transition-property: transform, z-index;
+  transition-duration: var(--letter-transition-up-duration), 0.1s;
+  transition-timing-function: cubic-bezier(0.33, 0, 0.33, -1.5), step-start;
+  transition-delay: var(--letter-transition-down-delay),
+    calc(
+      var(--letter-transition-down-delay) + 0.4 *
+        var(--letter-transition-unfold-duration)
+    );
+
+  perspective: var(--perspective);
 }
 
-.congrats-message {
-  text-align: center;
-  font-size: 5em;
+.open .letter {
+  z-index: 5;
+
+  transform: translateY(-75%); /* 110% */
+
+  transition-timing-function: cubic-bezier(0.67, 2.5, 0.67, 1), step-start;
+  transition-delay: var(--letter-transition-up-delay),
+    calc(
+      var(--letter-transition-up-delay) + 0.8 *
+        var(--letter-transition-unfold-duration)
+    );
 }
+
+.letter-top,
+.letter-bottom,
+.letter-bottom-backface {
+  width: 100%;
+  height: 100%;
+
+  background: var(--letter-color);
+}
+
+/**
+ * Open Letter
+ */
+
+.letter-bottom,
+.letter-bottom-backface {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+
+  transition-property: transform;
+  transition-duration: var(--letter-transition-unfold-duration);
+}
+
+.letter-bottom {
+  transform-origin: top center;
+  transform: rotateX(180deg);
+}
+
+.letter-bottom-backface {
+  transform-origin: bottom center;
+  transform: translateY(-200%);
+}
+
+.open .letter-bottom,
+.open .letter-bottom-backface {
+  transition-delay: var(--letter-transition-unfold-delay);
+}
+
+.open .letter-bottom {
+  transform: none;
+}
+
+.open .letter-bottom-backface {
+  transform: translateY(-200%) rotateX(-180deg);
+}
+
+/**
+ * Letter contents
+ */
+
+.letter {
+  color: var(--letter-text-color);
+  font-size: 4rem;
+  text-align: center;
+}
+
+.letter-top,
+.letter-bottom {
+  --padding: 1rem;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  box-sizing: border-box;
+}
+.letter-top {
+  padding-top: var(--padding);
+}
+.letter-bottom {
+  padding-bottom: var(--padding);
+}
+
+/*****************************************************************************\
+ *                                OTHER                                      *
+\*****************************************************************************/
 
 .gay {
   font-size: 3em;
