@@ -6,8 +6,17 @@
   --envelope-max-width: 90vw;
   --envelope-max-height: 60vh;
 
+  --envelope-aspect-ratio: 5 / 3;
+  --envelope-width: min(
+    var(--envelope-max-width),
+    calc(var(--envelope-max-height) * var(--envelope-aspect-ratio))
+  );
+
+  --font-size: calc(var(--envelope-width) / 20);
+  font-size: var(--font-size);
+
   --envelope-message-color: black;
-  --envelope-message-font-size: 5rem;
+  --envelope-message-font-size: 2rem;
 
   --letter-color: rgb(255, 245, 217);
   --letter-text-color: black;
@@ -30,12 +39,6 @@
     var(--letter-transition-down-delay) + var(--letter-transition-up-duration) *
       0.7
   );
-}
-
-@media (max-width: 500px) or (max-height: 750px) {
-  :root {
-    font-size: 0.5em;
-  }
 }
 
 html,
@@ -65,13 +68,8 @@ body {
 }
 
 .envelope {
-  --aspect-ratio: 5 / 3;
-  --envelope-width: min(
-    var(--envelope-max-width),
-    calc(var(--envelope-max-height) * var(--aspect-ratio))
-  );
   width: var(--envelope-width);
-  aspect-ratio: var(--aspect-ratio);
+  aspect-ratio: var(--envelope-aspect-ratio);
   position: relative;
 
   cursor: pointer;
@@ -291,7 +289,7 @@ body {
 
 .letter {
   color: var(--letter-text-color);
-  font-size: 4rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
