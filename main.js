@@ -5,5 +5,7 @@ $envelope.addEventListener("click", () => {
 
 const name = new URLSearchParams(location.search).get("n");
 if (name) {
-  document.getElementById("name").textContent = ` ${name}`;
+  document.querySelectorAll("[data-template='name']").forEach(($el) => {
+    $el.textContent = ` ${name}`;
+  });
 }

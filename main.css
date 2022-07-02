@@ -7,7 +7,7 @@
   --envelope-max-height: 60vh;
 
   --envelope-message-color: black;
-  --envelope-message-font-size: 3em;
+  --envelope-message-font-size: 5rem;
 
   --letter-color: rgb(255, 245, 217);
   --letter-text-color: black;
@@ -34,7 +34,7 @@
 
 @media (max-width: 500px) {
   :root {
-    font-size: 0.8em;
+    font-size: 0.5em;
   }
 }
 
@@ -218,10 +218,19 @@ body {
   perspective: var(--perspective);
 }
 
+@media (max-width: 500px) {
+  .letter {
+    top: 2%;
+    bottom: 2%;
+    left: 2%;
+    right: 2%;
+  }
+}
+
 .open .letter {
   z-index: 5;
 
-  transform: translateY(-75%); /* 110% */
+  transform: translateY(-75%);
 
   transition-timing-function: cubic-bezier(0.67, 2.5, 0.67, 1), step-start;
   transition-delay: var(--letter-transition-up-delay),
@@ -286,18 +295,19 @@ body {
   text-align: center;
 }
 
+.letter-contents {
+  box-sizing: border-box;
+  padding: 1rem;
+  width: 100%;
+  height: 200%;
+}
+
 .letter-top,
 .letter-bottom {
-  --padding: 1rem;
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-  box-sizing: border-box;
+  overflow: hidden;
 }
-.letter-top {
-  padding-top: var(--padding);
-}
-.letter-bottom {
-  padding-bottom: var(--padding);
+.letter-bottom .letter-contents {
+  transform: translateY(-50%);
 }
 
 /*****************************************************************************\
@@ -305,7 +315,7 @@ body {
 \*****************************************************************************/
 
 .gay {
-  font-size: 3em;
+  font-size: 5em;
   line-height: 0.7em;
 
   --background-square-size: 3em;
