@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sei Gay!</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./main.css" />
+</head>
+
+<body>
+  <div class="envelope-container">
+    <div id="envelope" class="envelope">
+      <div class="envelope-part-container envelope-container-static">
+        <div class="envelope-part envelope-left"></div>
+        <div class="envelope-part envelope-right"></div>
+        <div class="envelope-part-container envelope-container-bottom">
+          <div class="envelope-part envelope-bottom"></div>
+        </div>
+      </div>
+      <div class="envelope-part-container envelope-container-top">
+        <div class="envelope-part envelope-top-backface"></div>
+        <div class="envelope-part envelope-top">
+          <p>
+            Click to open!
+          </p>
+        </div>
+      </div>
+      <div class="letter"></div>
+    </div>
+  </div>
+
+  <!--
+    <div class="container">
+      <div class="congrats-message">
+        Congratulazioni<span id="name"></span>!<br />
+        sei<br />
+        <span class="gay">gay</span>
+      </div>
+    </div>
+  -->
+
+  <svg width="0" height="0" viewBox="0 0 150 90">
+    <!-- Use https://yqnn.github.io/svg-path-editor/ to edit -->
+    <defs>
+      <clipPath id="envelope-top-path" clipPathUnits="objectBoundingBox" transform="scale(0.00666666 0.01111111)">
+        <path d="M 0 0 L 150 0 Q 150 5 144 9 L 81 51 Q 75 55 69 51 L 6 9 Q 0 5 0 0 Z" />
+      </clipPath>
+      <clipPath id="envelope-top-rotated-path" clipPathUnits="objectBoundingBox"
+        transform="scale(0.00666666 0.01111111)">
+        <path d="M 0 90 L 150 90 Q 150 85 144 81 L 81 39 Q 75 35 69 39 L 6 81 Q 0 85 0 90 Z" />
+      </clipPath>
+      <clipPath id="envelope-bottom-path" clipPathUnits="objectBoundingBox" transform="scale(0.00666666 0.01111111)">
+        <path d="M 0 90 L 150 90 L 80 48 Q 75 45 70 48 Z" />
+      </clipPath>
+      <clipPath id="envelope-left-path" clipPathUnits="objectBoundingBox" transform="scale(0.00666666 0.01111111)">
+        <path d="M 0 0 L 0 90 L 70 48 Z" />
+      </clipPath>
+      <clipPath id="envelope-right-path" clipPathUnits="objectBoundingBox" transform="scale(0.00666666 0.01111111)">
+        <path d="M 150 0 L 150 90 L 80 48 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <script src="./main.js" type="module"></script>
+</body>
+
+</html>
