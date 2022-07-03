@@ -1,8 +1,3 @@
-const $envelope = document.getElementById("envelope");
-$envelope.addEventListener("click", () => {
-  $envelope.classList.toggle("open");
-});
-
 const params = new URLSearchParams(location.search);
 
 const name = params.get("n");
@@ -23,4 +18,6 @@ if (flag) {
   });
 }
 
-console.log(name, flag);
+document.getElementById("envelope").addEventListener("click", () => {
+  document.body.classList.toggle("open");
+});
