@@ -446,7 +446,7 @@ body {
   transition-duration: calc(var(--dialog-transition-duration) * 0.7), 1ms;
   transition-timing-function: linear, step-start;
 
-  transition-delay: 0s, calc(var(--dialog-transition-duration) * 0.5);
+  transition-delay: 0s, calc(var(--dialog-transition-duration) * 0.3);
 }
 
 #create:checked ~ * .dialog {
