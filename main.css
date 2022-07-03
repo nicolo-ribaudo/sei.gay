@@ -24,7 +24,7 @@
   --dialog-color: var(--letter-color);
   --dialog-text-color: var(--letter-text-color);
 
-  --letter-transition-up-duration: 1s;
+  --letter-transition-up-duration: 0.8s;
   --letter-transition-up-delay: calc(
     var(--letter-transition-up-duration) * 0.3
   );
@@ -38,7 +38,7 @@
     var(--letter-transition-unfold-duration) * 0.3
   );
 
-  --dialog-transition-duration: 1s;
+  --dialog-transition-duration: 0.8s;
 
   --envelope-transition-close-delay: calc(
     var(--letter-transition-down-delay) + var(--letter-transition-up-duration) *
@@ -232,7 +232,7 @@ body {
   filter: drop-shadow(0px 0px 2px rgba(50, 50, 0, 0.5));
 
   transition-property: transform, z-index;
-  transition-duration: var(--letter-transition-up-duration), 0.1s;
+  transition-duration: var(--letter-transition-up-duration), 1ms;
   transition-timing-function: cubic-bezier(0.33, 0, 0.33, -1.5), step-start;
   transition-delay: var(--letter-transition-down-delay),
     calc(
@@ -435,97 +435,62 @@ body {
   right: 5%;
   z-index: 2;
 
+  pointer-events: none;
   cursor: default;
   filter: drop-shadow(0px 0px 2px rgba(50, 50, 0, 0.5));
 
-  transform: translate(-94%, 100%) rotateZ(180deg);
-  transform-origin: 97% 0%;
+  transform: translate(-98%, 0%) rotate(180deg);
+  transform-origin: 99% 0%;
 
-  animation-duration: var(--dialog-transition-duration);
-  animation-name: hide-dialog;
-  animation-fill-mode: forwards;
+  transition-property: transform, z-index;
+  transition-duration: calc(var(--dialog-transition-duration) * 0.7), 1ms;
+  transition-timing-function: linear, step-start;
+
+  transition-delay: 0s, calc(var(--dialog-transition-duration) * 0.5);
 }
 
 #create:checked ~ * .dialog {
   z-index: 5;
+  transform: translate(-98%, -20%);
 
-  animation-name: take-dialog;
+  transition-delay: calc(var(--dialog-transition-duration) * 0.2),
+    calc(var(--dialog-transition-duration) * 0.5);
 }
 
-/* When editing this, update hide-dialog */
-@keyframes take-dialog {
-  0% {
-    animation-timing-function: ease-in;
-    z-index: 2;
-    transform: translate(-94%, 100%) rotateZ(180deg);
-  }
-  33% {
-    animation-timing-function: linear;
-    z-index: 2;
-    transform: translate(-94%, -20%) rotateZ(180deg);
-  }
-  34% {
-    animation-timing-function: linear;
-    z-index: 4;
-  }
-  66% {
-    animation-timing-function: linear;
-    z-index: 4;
-    transform: translate(-94%, 20%) rotateZ(90deg);
-  }
-  67% {
-    animation-timing-function: ease-out;
-    z-index: 5;
-  }
-  100% {
-    z-index: 5;
-    transform: translateY(-20%);
-  }
+.dialog-animation-helper-vertical {
+  width: 100%;
+  height: 100%;
+  transform: translateY(-98%);
+
+  transition-property: transform;
+  transition-duration: calc(var(--dialog-transition-duration) * 0.3);
+  transition-timing-function: ease-in;
+
+  transition-delay: calc(var(--dialog-transition-duration) * 0.7);
 }
 
-/* Same as take-dialog, but reversed */
-@keyframes hide-dialog {
-  100% {
-    z-index: 2;
-    transform: translate(-94%, 100%) rotateZ(180deg);
-  }
-  67% {
-    animation-timing-function: ease-out;
-    z-index: 2;
-    transform: translate(-94%, -20%) rotateZ(180deg);
-  }
-  66% {
-    animation-timing-function: linear;
-    z-index: 4;
-  }
-  34% {
-    animation-timing-function: linear;
-    z-index: 4;
-    transform: translate(-94%, 20%) rotateZ(90deg);
-  }
-  33% {
-    animation-timing-function: linear;
-    z-index: 5;
-  }
-  0% {
-    animation-timing-function: ease-in;
-    z-index: 5;
-    transform: translateY(-20%);
-  }
+#create:checked ~ * .dialog-animation-helper-vertical {
+  transform: translateY(20%);
+
+  transition-delay: 0s;
 }
 
-/**
- * Hack to hide the dialog before opening the envelope for
- * the first time. Otherwise the hide-dialog that is applied
- * by default to the dialod is visible on page load.
- */
-.dialog {
-  visibility: hidden;
-  transition: visibility 0.1s /* ~1 year */ 30000000s;
+.dialog-animation-helper-horizontal {
+  width: 100%;
+  height: 100%;
+  transform: none;
+
+  transition-property: transform;
+  transition-duration: calc(var(--dialog-transition-duration) * 0.4);
+  transition-timing-function: ease-out;
+
+  transition-delay: 0s;
 }
-#open:checked ~ * .dialog {
-  visibility: visible;
-  transition: none;
+
+#create:checked ~ * .dialog-animation-helper-horizontal {
+  transform: translateX(100%);
+
+  transition-delay: calc(var(--dialog-transition-duration) * 0.4);
 }
 
 /**

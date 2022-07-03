@@ -71,24 +71,28 @@
           <div class="letter-bottom-backface"></div>
         </div>
         <div class="dialog">
-          <form action="." method="get" class="dialog-contents">
-            <label for="input-n" class="dialog-label dialog-row-1">Nome:</label>
-            <div class="dialog-input dialog-row-1">
-              <input type="text" name="n" id="input-n" />
+          <div class="dialog-animation-helper-vertical">
+            <div class="dialog-animation-helper-horizontal">
+              <form action="." method="get" class="dialog-contents">
+                <label for="input-n" class="dialog-label dialog-row-1">Nome:</label>
+                <div class="dialog-input dialog-row-1">
+                  <input type="text" name="n" id="input-n" />
+                </div>
+                <label for="input-f" class="dialog-label dialog-row-2">
+                  Flag:
+                </label>
+                <div class="dialog-input dialog-row-2">
+                  <input type="text" name="f" id="input-f" />
+                </div>
+                <label for="create" class="dialog-label button">
+                  Annulla
+                </label>
+                <div class="dialog-input dialog-submit">
+                  <input type="submit" value="Invia" class="button" />
+                </div>
+              </form>
             </div>
-            <label for="input-f" class="dialog-label dialog-row-2">
-              Flag:
-            </label>
-            <div class="dialog-input dialog-row-2">
-              <input type="text" name="f" id="input-f" />
-            </div>
-            <label for="create" class="dialog-label button">
-              Annulla
-            </label>
-            <div class="dialog-input dialog-submit">
-              <input type="submit" value="Invia" class="button" />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </label>
