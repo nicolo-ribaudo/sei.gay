@@ -118,10 +118,10 @@ function buildLetterContents(data: Data) {
           ${sanitizedFlag}
         </span>
       </p>
-      <p>
+      <p class="button-write-letter-container">
         <label for="create">
           <span class="button" role="button">
-            ${strings[lang]["Create a new letter"]}!
+            ${strings[lang]["Write a custom letter"]}!
           </span>
         </label>
       </p>
