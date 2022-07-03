@@ -203,7 +203,6 @@ body {
   right: 10%;
   z-index: 2;
 
-  background: orange;
   filter: drop-shadow(0px 0px 2px rgba(50, 50, 0, 0.5));
 
   transition-property: transform, z-index;
