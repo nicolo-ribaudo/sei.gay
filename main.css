@@ -66,6 +66,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .envelope {
@@ -74,12 +78,12 @@ body {
   position: relative;
 
   cursor: pointer;
+  pointer-events: all;
 
   --perspective: calc(4 * var(--envelope-width));
   perspective: var(--perspective);
 
-  --envelope-translate-y: 20%;
-  transform: translateY(var(--envelope-translate-y));
+  transform: translateY(20%);
 }
 
 /**
@@ -231,8 +235,8 @@ body {
   transition-timing-function: cubic-bezier(0.67, 2.5, 0.67, 1), step-start;
   transition-delay: var(--letter-transition-up-delay),
     calc(
-      var(--letter-transition-up-delay) + 0.8 *
-        var(--letter-transition-unfold-duration)
+      var(--letter-transition-up-delay) + 0.6 *
+        var(--letter-transition-up-duration)
     );
 }
 
@@ -407,4 +411,5 @@ body {
   position: fixed;
   bottom: 1em;
   right: 1em;
+  z-index: 0;
 }
