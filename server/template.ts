@@ -9,7 +9,7 @@ type Data = {
 export function buildDocument(data: Data) {
   return /* html */ `
     <!DOCTYPE html>
-    <html lang="it">
+    <html lang="${data.lang}">
       ${buildHead(data)}
 
       <body>
