@@ -14,6 +14,7 @@
 
 <body>
   <input id="open" type="checkbox" class="control" />
+  <input id="create" type="checkbox" class="control" />
 
   <div class="envelope-container">
     <label for="open">
@@ -42,6 +43,13 @@
                 D'ora in poi sarai<br />
                 <span class="flag" data-template="flag">gay</span>
               </p>
+              <p>
+                <label for="create">
+                  <span class="button" role="button">
+                    Crea una nuova lettera!
+                  </span>
+                </label>
+              </p>
             </div>
           </div>
           <div class="letter-bottom">
@@ -51,9 +59,36 @@
                 D'ora in poi sarai<br />
                 <span class="flag" data-template="flag">gay</span>
               </p>
+              <p>
+                <label for="create">
+                  <span class="button" role="button">
+                    Crea una nuova lettera!
+                  </span>
+                </label>
+              </p>
             </div>
           </div>
           <div class="letter-bottom-backface"></div>
+        </div>
+        <div class="dialog">
+          <form action="." method="get" class="dialog-contents">
+            <label for="input-n" class="dialog-label dialog-row-1">Nome:</label>
+            <div class="dialog-input dialog-row-1">
+              <input type="text" name="n" id="input-n" />
+            </div>
+            <label for="input-f" class="dialog-label dialog-row-2">
+              Flag:
+            </label>
+            <div class="dialog-input dialog-row-2">
+              <input type="text" name="f" id="input-f" />
+            </div>
+            <label for="create" class="dialog-label button">
+              Annulla
+            </label>
+            <div class="dialog-input dialog-submit">
+              <input type="submit" value="Invia" class="button" />
+            </div>
+          </form>
         </div>
       </div>
     </label>
