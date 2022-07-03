@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
 
 import { buildDocument } from "./template.ts";
+import { encode, decode, urlParamsNames } from "./params.ts";
 
 serve(async (req) => {
   const { pathname, searchParams, origin } = new URL(req.url);
@@ -16,13 +17,29 @@ serve(async (req) => {
   }
 
   if (pathname === "/" || pathname === "/it" || pathname === "/en") {
-    if (deleteIfEmpty(searchParams, ["n", "f"])) {
-      return Response.redirect(`${origin}${pathname}?${searchParams}`);
+    if (searchParams.has(urlParamsNames.encode)) {
+      const encoded = encode(
+        searchParams.get(urlParamsNames.name),
+        searchParams.get(urlParamsNames.flag)
+      );
+      return Response.redirect(
+        `${origin}${pathname}?${urlParamsNames.encodedData}=${encoded}`
+      );
+    }
+
+    let name, flag;
+    if (searchParams.has(urlParamsNames.encodedData)) {
+      [name, flag] = decode(
+        searchParams.get(urlParamsNames.encodedData) ?? ":"
+      );
+    } else {
+      name = searchParams.get(urlParamsNames.name) ?? "";
+      flag = searchParams.get(urlParamsNames.flag) ?? "";
     }
 
     const document = buildDocument({
-      name: searchParams.get("n"),
-      flag: searchParams.get("f"),
+      name,
+      flag,
       lang: pathname === "/en" ? "en" : "it",
     });
 
@@ -33,14 +50,3 @@ serve(async (req) => {
 
   return Response.redirect(`${origin}/?${searchParams}`);
 });
-
-function deleteIfEmpty(map: URLSearchParams, keys: string[]) {
-  let updated = false;
-  for (const key of keys) {
-    if (map.has(key) && !map.get(key)) {
-      map.delete(key);
-      updated = true;
-    }
-  }
-  return updated;
-}

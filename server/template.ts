@@ -1,8 +1,9 @@
 import * as strings from "./strings.ts";
+import { urlParamsNames } from "./params.ts";
 
 type Data = {
-  name: string | null;
-  flag: string | null;
+  name: string;
+  flag: string;
   lang: keyof typeof strings;
 };
 
@@ -88,7 +89,7 @@ function buildLetterContents(data: Data) {
 
   const sanitizedName = data.name ? ` ${sanitizeHTML(data.name)}` : "";
 
-  const flag = data.flag ?? "gay";
+  const flag = data.flag || "gay";
   const sanitizedFlag = sanitizeHTML(flag);
   const flagClass =
     flag && /^[a-z]+$/i.test(flag) ? `flag-${flag.toLowerCase()}` : "";
@@ -124,18 +125,19 @@ function buildDialog({ lang }: Data) {
               ${strings[lang]["Name"]}:
             </label>
             <div class="dialog-input dialog-row-1">
-              <input type="text" name="n" id="input-n" />
+              <input type="text" name="${urlParamsNames.name}" id="input-n" />
             </div>
             <label for="input-f" class="dialog-label dialog-row-2">
               ${strings[lang]["Flag"]}:
             </label>
             <div class="dialog-input dialog-row-2">
-              <input type="text" name="f" id="input-f" />
+              <input type="text" name="${urlParamsNames.flag}" id="input-f" />
             </div>
             <label for="create" class="dialog-label button">
               ${strings[lang]["Cancel"]}
             </label>
             <div class="dialog-input dialog-submit">
+              <input type="hidden" name="${urlParamsNames.encode}" />
               <input type="submit" value="${strings[lang]["Submit"]}" class="button" />
             </div>
           </form>
