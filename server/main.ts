@@ -44,6 +44,7 @@ serve(async (req) => {
     const document = buildDocument({
       name,
       flag,
+      urlSearchParams: searchParams.toString(),
       lang: pathname === "/en" ? "en" : "it",
     });
 

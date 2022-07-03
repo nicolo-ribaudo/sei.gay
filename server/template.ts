@@ -4,6 +4,7 @@ import { urlParamsNames } from "./params.ts";
 type Data = {
   name: string;
   flag: string;
+  urlSearchParams: string;
   lang: keyof typeof strings;
 };
 
@@ -26,6 +27,8 @@ export function buildDocument(data: Data) {
             </div>
           </label>
         </div>
+
+        ${buildLanguagePicker(data)}
 
         <div class="link-me">
           Made by
@@ -51,6 +54,17 @@ function buildHead({ lang }: Data) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link rel="stylesheet" href="./main.css" />
     </head>
+  `;
+}
+
+function buildLanguagePicker({ urlSearchParams, lang: currentLang }: Data) {
+  return /* html */ `
+    <div class="language-picker">
+      ${Object.keys(strings)
+        .filter((lang) => lang !== currentLang)
+        .map((lang) => `<a href="/${lang}?${urlSearchParams}">${lang}</a>`)
+        .join("")}
+    </div>
   `;
 }
 
