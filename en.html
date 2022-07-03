@@ -13,46 +13,50 @@
 </head>
 
 <body>
+  <input id="open" type="checkbox" class="control" />
+
   <div class="envelope-container">
-    <div id="envelope" class="envelope">
-      <div class="envelope-part-container envelope-container-static">
-        <div class="envelope-part envelope-left"></div>
-        <div class="envelope-part envelope-right"></div>
-        <div class="envelope-part-container envelope-container-bottom">
-          <div class="envelope-part envelope-bottom"></div>
+    <label for="open">
+      <div class="envelope">
+        <div class="envelope-part-container envelope-container-static">
+          <div class="envelope-part envelope-left"></div>
+          <div class="envelope-part envelope-right"></div>
+          <div class="envelope-part-container envelope-container-bottom">
+            <div class="envelope-part envelope-bottom"></div>
+          </div>
         </div>
-      </div>
-      <div class="envelope-part-container envelope-container-top">
-        <div class="envelope-part envelope-top-backface"></div>
-        <div class="envelope-part envelope-top">
-          <p style="margin-top: 1em">
-            Open me!
-          </p>
-        </div>
-      </div>
-      <div class="letter">
-        <!-- letter-top-contents and letter-bottom-contents must have the same contents -->
-        <div class="letter-top">
-          <div class="letter-contents">
-            <p>
-              Congratulations<span data-template="name"></span>!<br />
-              Now you are<br />
-              <span class="flag" data-template="flag">gay</span>
+        <div class="envelope-part-container envelope-container-top">
+          <div class="envelope-part envelope-top-backface"></div>
+          <div class="envelope-part envelope-top">
+            <p style="margin-top: 1em">
+              Open me!
             </p>
           </div>
         </div>
-        <div class="letter-bottom">
-          <div class="letter-contents">
-            <p>
-              Congratulations<span data-template="name"></span>!<br />
-              Now you are<br />
-              <span class="flag" data-template="flag">gay</span>
-            </p>
+        <div class="letter">
+          <!-- letter-top-contents and letter-bottom-contents must have the same contents -->
+          <div class="letter-top">
+            <div class="letter-contents">
+              <p>
+                Congratulations<span data-template="name"></span>!<br />
+                Now you are<br />
+                <span class="flag" data-template="flag">gay</span>
+              </p>
+            </div>
           </div>
+          <div class="letter-bottom">
+            <div class="letter-contents">
+              <p>
+                Congratulations<span data-template="name"></span>!<br />
+                Now you are<br />
+                <span class="flag" data-template="flag">gay</span>
+              </p>
+            </div>
+          </div>
+          <div class="letter-bottom-backface"></div>
         </div>
-        <div class="letter-bottom-backface"></div>
       </div>
-    </div>
+    </label>
   </div>
 
   <div class="link-me">

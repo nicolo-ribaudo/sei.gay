@@ -17,7 +17,3 @@ if (flag) {
     } catch {}
   });
 }
-
-document.getElementById("envelope").addEventListener("click", () => {
-  document.body.classList.toggle("open");
-});
