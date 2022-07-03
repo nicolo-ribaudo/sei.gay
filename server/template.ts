@@ -125,13 +125,13 @@ function buildDialog({ lang }: Data) {
               ${strings[lang]["Name"]}:
             </label>
             <div class="dialog-input dialog-row-1">
-              <input type="text" name="${urlParamsNames.name}" id="input-n" />
+              <input type="text" name="${urlParamsNames.name}" id="input-n" maxlength="100" />
             </div>
             <label for="input-f" class="dialog-label dialog-row-2">
               ${strings[lang]["Flag"]}:
             </label>
             <div class="dialog-input dialog-row-2">
-              <input type="text" name="${urlParamsNames.flag}" id="input-f" />
+              <input type="text" name="${urlParamsNames.flag}" id="input-f" maxlength="100" />
             </div>
             <label for="create" class="dialog-label button">
               ${strings[lang]["Cancel"]}

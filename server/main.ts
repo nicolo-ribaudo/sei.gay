@@ -37,6 +37,10 @@ serve(async (req) => {
       flag = searchParams.get(urlParamsNames.flag) ?? "";
     }
 
+    if (name.length > 100 || flag.length > 100) {
+      return Response.redirect(`${origin}${pathname}`);
+    }
+
     const document = buildDocument({
       name,
       flag,
