@@ -96,6 +96,15 @@ body {
   height: 100%;
 }
 
+.envelope-part-container {
+  cursor: default;
+  pointer-events: none;
+}
+.envelope-part {
+  cursor: pointer;
+  pointer-events: all;
+}
+
 .envelope-part,
 .envelope {
   background: var(--envelope-color);
@@ -164,12 +173,10 @@ body {
   transition-property: transform, filter, z-index;
   transition-duration: var(--envelope-transition-duration);
   transition-timing-function: default, default, step-start;
-  transition-delay: var(--envelope-transition-close-delay),
-    var(--envelope-transition-close-delay),
-    calc(var(--envelope-transition-close-delay));
+  transition-delay: var(--envelope-transition-close-delay);
 }
 
-#open:checked + * .envelope-container-top {
+#open:checked ~ * .envelope-container-top {
   --shadow-size: 0.5px;
   z-index: 1;
   transform: rotateX(180deg);
@@ -197,12 +204,14 @@ body {
 
 .letter {
   position: absolute;
-  top: 10%;
-  bottom: 10%;
-  left: 10%;
-  right: 10%;
+  --margin: 10%;
+  top: var(--margin);
+  bottom: var(--margin);
+  left: var(--margin);
+  right: var(--margin);
   z-index: 2;
 
+  cursor: default;
   filter: drop-shadow(0px 0px 2px rgba(50, 50, 0, 0.5));
 
   transition-property: transform, z-index;
@@ -211,7 +220,7 @@ body {
   transition-delay: var(--letter-transition-down-delay),
     calc(
       var(--letter-transition-down-delay) + 0.4 *
-        var(--letter-transition-unfold-duration)
+        var(--letter-transition-up-duration)
     );
 
   perspective: var(--perspective);
@@ -219,14 +228,11 @@ body {
 
 @media (max-width: 500px) or (max-height: 750px) {
   .letter {
-    top: 2%;
-    bottom: 2%;
-    left: 2%;
-    right: 2%;
+    --margin: 2%;
   }
 }
 
-#open:checked + * .letter {
+#open:checked ~ * .letter {
   z-index: 5;
 
   transform: translateY(-75%);
@@ -271,16 +277,16 @@ body {
   transform: translateY(-200%);
 }
 
-#open:checked + * .letter-bottom,
-#open:checked + * .letter-bottom-backface {
+#open:checked ~ * .letter-bottom,
+#open:checked ~ * .letter-bottom-backface {
   transition-delay: var(--letter-transition-unfold-delay);
 }
 
-#open:checked + * .letter-bottom {
+#open:checked ~ * .letter-bottom {
   transform: none;
 }
 
-#open:checked + * .letter-bottom-backface {
+#open:checked ~ * .letter-bottom-backface {
   transform: translateY(-200%) rotateX(-180deg);
 }
 
@@ -299,6 +305,11 @@ body {
   padding: 1rem;
   width: 100%;
   height: 200%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .letter-top,
 .letter-bottom {
@@ -306,12 +317,6 @@ body {
 }
 .letter-bottom .letter-contents {
   transform: translateY(-50%);
-}
-
-.letter-contents {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /*****************************************************************************\
