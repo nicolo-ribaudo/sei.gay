@@ -7,7 +7,7 @@ export const en = {
   Name: "Name",
   Flag: "Flag",
   Cancel: "Cancel",
-  Submit: "Submit",
+  Create: "Create",
 };
 
 export const it: typeof en = {
@@ -19,5 +19,5 @@ export const it: typeof en = {
   Name: "Nome",
   Flag: "Flag",
   Cancel: "Annulla",
-  Submit: "Invia",
+  Create: "Crea",
 };

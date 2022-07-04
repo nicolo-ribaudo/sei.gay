@@ -152,7 +152,7 @@ function buildDialog({ lang }: Data) {
             </label>
             <div class="dialog-input dialog-submit">
               <input type="hidden" name="${urlParamsNames.encode}" />
-              <input type="submit" value="${strings[lang]["Submit"]}" class="button" />
+              <input type="submit" value="${strings[lang]["Create"]}" class="button" />
             </div>
           </form>
         </div>
