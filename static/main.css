@@ -581,6 +581,11 @@ body {
   right: 0.5rem;
   z-index: 0;
 }
+@media (max-width: 500px) or (max-height: 750px) {
+  .link-me {
+    font-size: 0.8rem;
+  }
+}
 
 .language-picker {
   --size: 1rem;
