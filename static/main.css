@@ -544,17 +544,24 @@ body {
   text-decoration-style: solid;
 }
 
-.link-me {
+.link-me,
+.link-github {
   font-size: 0.5rem;
   position: fixed;
   bottom: 0.5rem;
-  right: 0.5rem;
   z-index: 0;
 }
 @media (max-width: 500px) or (max-height: 750px) {
-  .link-me {
+  .link-me,
+  .link-github {
     font-size: 0.8rem;
   }
+}
+.link-me {
+  right: 0.5rem;
+}
+.link-github {
+  left: 0.5rem;
 }
 
 .language-picker {

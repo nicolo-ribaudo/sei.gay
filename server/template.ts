@@ -31,11 +31,14 @@ export function buildDocument(data: Data) {
 
         ${buildLanguagePicker(data)}
 
+        <div class="link-github" style="display:none">
+          Source code
+          <a href="https://github.com/nicolo-ribaudo/sei.gay" target="_blank">on GitHub</a>.
+        </div>
+
         <div class="link-me">
           Made by
-          <a href="https://twitter.com/NicoloRibaudo" target="_blank"
-            >@NicoloRibaudo</a
-          >.
+          <a href="https://twitter.com/NicoloRibaudo" target="_blank">@NicoloRibaudo</a>.
         </div>
 
         ${buildSvgPaths()}
