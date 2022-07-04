@@ -1,5 +1,6 @@
 import * as strings from "./strings.ts";
 import { urlParamsNames } from "./params.ts";
+import { flagsNormalization } from "./dictionary.ts";
 
 type Data = {
   name: string;
@@ -104,10 +105,15 @@ function buildLetterContents(data: Data) {
   const sanitizedName = data.name ? ` ${sanitizeHTML(data.name)}` : "";
 
   const flag = data.flag || "gay";
-  const sanitizedFlag = sanitizeHTML(flag);
-  const flagClass =
-    flag && /^[a-z]+$/i.test(flag) ? `flag-${flag.toLowerCase()}` : "";
   const fontSize = `clamp(1em, ${15 / flag.length}em, 5em)`;
+  const sanitizedFlag = sanitizeHTML(flag);
+  const lowercaseFlag = flag.toLowerCase();
+  let flagClass = "";
+  if (flag && Object.hasOwn(flagsNormalization, lowercaseFlag)) {
+    flagClass = `flag-${flagsNormalization[lowercaseFlag]}`;
+  } else if (/^[a-z]+$/.test(lowercaseFlag)) {
+    flagClass = `flag-${lowercaseFlag}`;
+  }
 
   return /* html */ `
     <div class="letter-contents">

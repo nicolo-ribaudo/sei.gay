@@ -18,6 +18,10 @@ serve(async (req) => {
 
   if (pathname === "/" || pathname === "/it" || pathname === "/en") {
     if (searchParams.has(urlParamsNames.encode)) {
+      // If this request comes from the letter-generation form,
+      // encode the name and flag as base64 to avoid spoilers
+      // when receiving the link.
+
       const encoded = encode(
         searchParams.get(urlParamsNames.name)?.trim(),
         searchParams.get(urlParamsNames.flag)?.trim()
