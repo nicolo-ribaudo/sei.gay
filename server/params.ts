@@ -5,7 +5,7 @@ export const urlParamsNames = {
   encodedData: "d",
 } as const;
 
-export function encode(name: string | null, flag: string | null) {
+export function encode(name: string | undefined, flag: string | undefined) {
   return btoa(`${escapeColon(name ?? "")}:${escapeColon(flag ?? "")}`);
 }
 

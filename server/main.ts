@@ -19,8 +19,8 @@ serve(async (req) => {
   if (pathname === "/" || pathname === "/it" || pathname === "/en") {
     if (searchParams.has(urlParamsNames.encode)) {
       const encoded = encode(
-        searchParams.get(urlParamsNames.name),
-        searchParams.get(urlParamsNames.flag)
+        searchParams.get(urlParamsNames.name)?.trim(),
+        searchParams.get(urlParamsNames.flag)?.trim()
       );
       return Response.redirect(
         `${origin}${pathname}?${urlParamsNames.encodedData}=${encoded}`
@@ -33,8 +33,8 @@ serve(async (req) => {
         searchParams.get(urlParamsNames.encodedData) ?? ":"
       );
     } else {
-      name = searchParams.get(urlParamsNames.name) ?? "";
-      flag = searchParams.get(urlParamsNames.flag) ?? "";
+      name = searchParams.get(urlParamsNames.name)?.trim() ?? "";
+      flag = searchParams.get(urlParamsNames.flag)?.trim() ?? "";
     }
 
     if (name.length > 100 || flag.length > 100) {
