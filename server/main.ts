@@ -16,6 +16,16 @@ serve(async (req) => {
     });
   }
 
+  if (pathname === "/og-image-it.webp" || pathname === "/og-image-en.webp") {
+    const file = await Deno.readFile(
+      new URL(`../static/${pathname}`, import.meta.url)
+    );
+
+    return new Response(file, {
+      headers: { "content-type": "image/webp" },
+    });
+  }
+
   if (pathname === "/" || pathname === "/it" || pathname === "/en") {
     if (searchParams.has(urlParamsNames.encode)) {
       // If this request comes from the letter-generation form,

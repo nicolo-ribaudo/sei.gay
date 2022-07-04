@@ -51,6 +51,13 @@ function buildHead({ lang }: Data) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>${strings[lang]["You are gay"]}!</title>
 
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="og:title" content="💌 ${strings[lang]["Open me"]}!" />
+      <meta property="og:image" content="/og-image-${lang}.webp" />
+
+      ${"" /* https://css-tricks.com/emoji-as-a-favicon/ */}
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>">
+
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link rel="stylesheet" href="./main.css" />
