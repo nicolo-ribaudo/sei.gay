@@ -21,3 +21,27 @@ export const it: typeof en = {
   Cancel: "Annulla",
   Create: "Crea",
 };
+
+export const de: typeof en = {
+  "You are gay": "Du bist gay",
+  "Open me": "Öffne Mich",
+  Congratulations: "Glückwunsch",
+  "Now you are": "Ab jetzt bist du",
+  "Write a custom letter": "Erstelle einen eignen Brief",
+  Name: "Name",
+  Flag: "Flagge",
+  Cancel: "Abbrechen",
+  Create: "Erstellen",
+};
+
+export const nl: typeof en = {
+  "You are gay": "Jij bent gay",
+  "Open me": "Open mij",
+  Congratulations: "Gefeliciteerd",
+  "Now you are": "Vanaf nu ben je",
+  "Write a custom letter": "Maak je eigen brief",
+  Name: "Naam",
+  Flag: "Vlag",
+  Cancel: "Afbreken",
+  Create: "Maak",
+};

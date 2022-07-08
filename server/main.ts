@@ -1,7 +1,8 @@
-import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.147.0/http/server.ts";
 
 import { buildDocument } from "./template.ts";
 import { encode, decode, urlParamsNames } from "./params.ts";
+import * as strings from "./strings.ts";
 
 serve(async (req) => {
   const { pathname, searchParams, origin } = new URL(req.url);
@@ -36,7 +37,10 @@ serve(async (req) => {
     });
   }
 
-  if (pathname === "/" || pathname === "/it" || pathname === "/en") {
+  const validLangs = Object.keys(strings) as Array<keyof typeof strings>;
+  const lang = validLangs.find(lang => pathname === `/${lang}`);
+
+  if (pathname === "/" || lang !== undefined) {
     if (searchParams.has(urlParamsNames.encode)) {
       // If this request comes from the letter-generation form,
       // encode the name and flag as base64 to avoid spoilers
@@ -69,7 +73,7 @@ serve(async (req) => {
       name,
       flag,
       urlSearchParams: searchParams.toString(),
-      lang: pathname === "/en" ? "en" : "it",
+      lang: lang ?? "it",
     });
 
     return new Response(document, {
