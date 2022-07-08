@@ -45,3 +45,15 @@ export const nl: typeof en = {
   Cancel: "Afbreken",
   Create: "Maak",
 };
+
+export const pt: typeof en = {
+  "You are gay": "Você é gay",
+  "Open me": "Abra-me",
+  Congratulations: "Parabéns",
+  "Now you are": "Agora você é",
+  "Write a custom letter": "Escreva uma carta customizada",
+  Name: "Nome",
+  Flag: "Bandeira",
+  Cancel: "Cancelar",
+  Create: "Criar",
+};
