@@ -35,7 +35,7 @@ export function buildDocument(data: Data) {
 
         ${buildLanguagePicker(data)}
 
-        <div class="link-github" style="display:none">
+        <div class="link-github">
           Source code
           <a href="https://github.com/nicolo-ribaudo/sei.gay" target="_blank">on GitHub</a>.
         </div>
