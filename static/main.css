@@ -557,6 +557,7 @@ body {
   text-decoration-style: dotted;
   font-family: inherit;
   font-variant: inherit;
+  color: inherit;
 }
 .button:hover {
   text-decoration-style: solid;
