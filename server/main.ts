@@ -37,15 +37,10 @@ serve(async (req) => {
     });
   }
 
-  let lang: keyof typeof strings | null = null;
-  for (const langId of Object.keys(strings)) {
-    if (pathname === `/${langId}`) {
-      lang = langId as keyof typeof strings;
-      break;
-    }
-  }
+  const validLangs = Object.keys(strings) as Array<keyof typeof strings>;
+  const lang = validLangs.find(lang => pathname === `/${lang}`);
 
-  if (pathname === "/" || lang !== null) {
+  if (pathname === "/" || lang !== undefined) {
     if (searchParams.has(urlParamsNames.encode)) {
       // If this request comes from the letter-generation form,
       // encode the name and flag as base64 to avoid spoilers
