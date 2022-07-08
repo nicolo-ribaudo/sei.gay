@@ -1,6 +1,6 @@
-# [sei.gay](https://sei.gay)
+# [sei.gay](https://sei.gay/en)
 
-> Your crush is straight and you need to invite them to be gay? You friend just came out as bi and you want to congratulate them? [sei.gay](https://sei.gay) is exactly what you are looking for!
+> Your crush is straight and you need to invite them to be gay? You friend just came out as bi and you want to congratulate them? [sei.gay](https://sei.gay/en) is exactly what you are looking for!
 
 - Italian version: [sei.gay/it](https://sei.gay/it)
 - English version: [sei.gay/en](https://sei.gay/en)
@@ -21,4 +21,5 @@ PRs are welcome!
 
 #### Adding more flags
 
-- You can add a gradient in `./scripts/build-gradient-45deg-square.js`, and run `deno run ./scripts/build-gradient-45deg-square.js` to generate the corresponding CSS. Gradients must start and end with the same color, and they must have a color specified for the 50% point (this is needed to make them look when rotated by 45 degrees and repeated).
+- You can add a gradient in `./scripts/build-gradient-45deg-square.js`, and run `deno run ./scripts/build-gradient-45deg-square.js` to generate the corresponding CSS. Gradients must start and end with the same color, and they must have a color specified for the 50% point (this is needed to make them look good when rotated by 45 degrees and repeated).
+- You can add aliases in `./server/dictionary.ts`.
