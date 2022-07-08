@@ -16,6 +16,16 @@ serve(async (req) => {
     });
   }
 
+  if (pathname === "/Titan-One.woff2" || pathname === "/Titan-One-ext.woff2") {
+    const file = await Deno.readFile(
+      new URL(`../static${pathname}`, import.meta.url)
+    );
+
+    return new Response(file, {
+      headers: { "content-type": "font/woff2" },
+    });
+  }
+
   if (pathname === "/og-image-it.webp" || pathname === "/og-image-en.webp") {
     const file = await Deno.readFile(
       new URL(`../static/${pathname}`, import.meta.url)
