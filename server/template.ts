@@ -2,6 +2,10 @@ import * as strings from "./strings.ts";
 import { urlParamsNames } from "./params.ts";
 import { flagsNormalization } from "./dictionary.ts";
 
+const style = await Deno.readTextFile(
+  new URL("../static/main.css", import.meta.url)
+);
+
 type Data = {
   name: string;
   flag: string;
@@ -65,7 +69,14 @@ function buildHead({ lang }: Data) {
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link rel="stylesheet" href="./main.css" />
+
+      ${"" /* <link rel="stylesheet" href="./main.css" /> */}
+      ${
+        ""
+        /* We inline styles to prevent transitions from running on page load when the
+        page is rendered before loading the stylesheets. */
+      }
+      <style>${style}</style>
     </head>
   `;
 }
