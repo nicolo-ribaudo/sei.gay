@@ -201,6 +201,7 @@ body {
  */
 
 .envelope-top {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
@@ -299,6 +300,7 @@ body {
 .letter-bottom,
 .letter-bottom-backface {
   transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 
   transition-property: transform;
