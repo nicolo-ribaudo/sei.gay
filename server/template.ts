@@ -20,8 +20,8 @@ export function buildDocument(data: Data) {
       ${buildHead(data)}
 
       <body>
-        <input id="open" type="checkbox" class="control" />
-        <input id="create" type="checkbox" class="control" />
+        <input id="open" type="checkbox" class="control" tabindex="1" aria-label="open/close envelope" />
+        <input id="create" type="checkbox" class="control" tabindex="2" aria-label="open/close dialog" />
 
         <div class="envelope-container">
           <label for="open">
@@ -146,7 +146,12 @@ function buildLetterContents(data: Data) {
       </p>
       <p class="button-write-letter-container">
         <label for="create">
-          <span class="button" role="button">
+          <span class="button" role="button" id="open-create">
+            ${strings[lang]["Write a custom letter"]}!
+          </span>
+        </label>
+        <label class="reverse-hidden">
+          <span class="button">
             ${strings[lang]["Write a custom letter"]}!
           </span>
         </label>
@@ -173,11 +178,15 @@ function buildDialog({ lang }: Data) {
             <div class="dialog-input dialog-row-2">
               <input type="text" name="${urlParamsNames.flag}" id="input-f" maxlength="100" />
             </div>
-            <label for="create" class="dialog-label button">
+            <span class="dialog-label button reverse-hidden">
+              ${strings[lang]["Cancel"]}
+            </span>
+            <label for="create" class="dialog-label button" id="close-create">
               ${strings[lang]["Cancel"]}
             </label>
             <div class="dialog-input dialog-submit">
               <input type="hidden" name="${urlParamsNames.encode}" />
+              <span class="button reverse-hidden">${strings[lang]["Create"]}</span>
               <input type="submit" value="${strings[lang]["Create"]}" class="button" />
             </div>
           </form>

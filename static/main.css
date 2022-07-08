@@ -446,7 +446,7 @@ body {
   transition-delay: 0s, calc(var(--dialog-transition-duration) * 0.3);
 }
 
-#create:checked ~ * .dialog {
+#open:checked + #create:checked ~ * .dialog {
   z-index: 5;
   transform: translate(-98%, -20%);
 
@@ -466,7 +466,7 @@ body {
   transition-delay: calc(var(--dialog-transition-duration) * 0.7);
 }
 
-#create:checked ~ * .dialog-animation-helper-vertical {
+#open:checked + #create:checked ~ * .dialog-animation-helper-vertical {
   transform: translateY(20%);
 
   transition-delay: 0s;
@@ -484,7 +484,7 @@ body {
   transition-delay: 0s;
 }
 
-#create:checked ~ * .dialog-animation-helper-horizontal {
+#open:checked + #create:checked ~ * .dialog-animation-helper-horizontal {
   transform: translateX(100%);
 
   transition-delay: calc(var(--dialog-transition-duration) * 0.4);
@@ -521,9 +521,9 @@ body {
   text-align: center;
 }
 
-#create:checked ~ * .dialog-contents input,
-#create:checked ~ * .dialog-contents label,
-#create:checked ~ * .dialog-contents .button {
+#open:checked + #create:checked ~ * .dialog-contents input,
+#open:checked + #create:checked ~ * .dialog-contents label,
+#open:checked + #create:checked ~ * .dialog-contents .button {
   pointer-events: all;
 }
 
@@ -547,10 +547,6 @@ body {
 /*****************************************************************************\
  *                                OTHER                                      *
 \*****************************************************************************/
-
-.control {
-  display: none;
-}
 
 .button {
   font-size: 0.9rem;
@@ -616,4 +612,36 @@ body {
   color: var(--language-picker-text-color);
 
   border-radius: calc(var(--size) * 0.2);
+}
+
+/*****************************************************************************\
+ *                                 A11y                                      *
+\*****************************************************************************/
+
+.control {
+  opacity: 0;
+}
+
+
+body:has(#create:checked) #open,
+#open:not(:checked) ~ #create,
+#open:not(:checked) ~ * .letter label,
+#open:checked ~ * .letter label.reverse-hidden,
+#create:not(:checked) ~ * .dialog-contents input,
+#create:checked ~ * .dialog-contents .reverse-hidden {
+  display: none;
+}
+
+#open:not(:checked) ~ * .letter label.reverse-hidden,
+#create:not(:checked) ~ * .dialog-contents .reverse-hidden {
+  display: block;
+}
+
+#open:focus ~ * .envelope-container-bottom {
+  outline: black dashed 3px;
+}
+
+#create:focus:not(:checked) ~ * #open-create,
+#create:focus:checked ~ * #close-create {
+  outline: auto;
 }
