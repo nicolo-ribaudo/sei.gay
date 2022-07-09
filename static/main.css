@@ -368,7 +368,6 @@ body {
 \*****************************************************************************/
 
 .flag {
-  font-size: 5em;
   line-height: 0.7em;
 
   --background-square-size: 3em;

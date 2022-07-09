@@ -8,6 +8,7 @@ export const en = {
   Flag: "Flag",
   Cancel: "Cancel",
   Create: "Create",
+  postFlag: null as null | string,
 };
 
 export const it: typeof en = {
@@ -20,6 +21,7 @@ export const it: typeof en = {
   Flag: "Flag",
   Cancel: "Annulla",
   Create: "Crea",
+  postFlag: null,
 };
 
 export const de: typeof en = {
@@ -32,6 +34,7 @@ export const de: typeof en = {
   Flag: "Flagge",
   Cancel: "Abbrechen",
   Create: "Erstellen",
+  postFlag: null,
 };
 
 export const nl: typeof en = {
@@ -44,6 +47,7 @@ export const nl: typeof en = {
   Flag: "Vlag",
   Cancel: "Afbreken",
   Create: "Maak",
+  postFlag: null,
 };
 
 export const pt: typeof en = {
@@ -56,6 +60,7 @@ export const pt: typeof en = {
   Flag: "Bandeira",
   Cancel: "Cancelar",
   Create: "Criar",
+  postFlag: null,
 };
 
 export const es: typeof en = {
@@ -68,4 +73,18 @@ export const es: typeof en = {
   Flag: "Bandera",
   Cancel: "Cancelar",
   Create: "Crear",
+  postFlag: null,
+};
+
+export const tr: typeof en = {
+  "You are gay": "Geysin",
+  "Open me": "Beni aç",
+  Congratulations: "Tebrikler",
+  "Now you are": "Bundan böyle sen",
+  "Write a custom letter": "Özel bir mektup yaz",
+  Name: "İsim",
+  Flag: "Etiket",
+  Cancel: "İptal",
+  Create: "Oluştur",
+  postFlag: "'sin",
 };

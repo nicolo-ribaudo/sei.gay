@@ -2,12 +2,13 @@
 
 > Your crush is straight and you need to invite them to be gay? You friend just came out as bi and you want to congratulate them? [sei.gay](https://sei.gay/en) is exactly what you are looking for!
 
-- Italian version: [sei.gay/it](https://sei.gay/it)
+- Dutch version: [sei.gay/nl](https://sei.gay/nl)
 - English version: [sei.gay/en](https://sei.gay/en)
 - German version: [sei.gay/de](https://sei.gay/de)
-- Dutch version: [sei.gay/nl](https://sei.gay/nl)
+- Italian version: [sei.gay/it](https://sei.gay/it)
 - Portuguese version: [sei.gay/pt](https://sei.gay/pt)
 - Spanish version: [sei.gay/es](https://sei.gay/es)
+- Turkish version: [sei.gay/tr](https://sei.gay/tr)
 
 ## Contributing
 
