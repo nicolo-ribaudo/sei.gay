@@ -57,3 +57,15 @@ export const pt: typeof en = {
   Cancel: "Cancelar",
   Create: "Criar",
 };
+
+export const es: typeof en = {
+  "You are gay": "¡Eres gay",
+  "Open me": "¡Abrir",
+  Congratulations: "¡Felicitaciones",
+  "Now you are": "Ahora eres",
+  "Write a custom letter": "¡Escribe una carta personalizada",
+  Name: "Nombre",
+  Flag: "Bandera",
+  Cancel: "Cancelar",
+  Create: "Crear",
+};
