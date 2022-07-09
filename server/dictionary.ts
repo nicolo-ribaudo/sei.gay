@@ -8,3 +8,7 @@ export const flagsNormalization: { [word: string]: string } = {
   etero: "straight",
   lesbica: "lesbian",
 };
+
+export function turkishLowercaseI(str: string) {
+  return str.replaceAll("i", `<span style="font-variant:normal">i</span>`);
+}

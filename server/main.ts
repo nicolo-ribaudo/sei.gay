@@ -17,7 +17,11 @@ serve(async (req) => {
     });
   }
 
-  if (pathname === "/Titan-One.woff2" || pathname === "/Titan-One-ext.woff2") {
+  if (
+    pathname === "/Titan-One.woff2" ||
+    pathname === "/Titan-One-ext.woff2" ||
+    pathname === "/Titan-One-custom.woff2"
+  ) {
     const file = await Deno.readFile(
       new URL(`../static${pathname}`, import.meta.url)
     );
