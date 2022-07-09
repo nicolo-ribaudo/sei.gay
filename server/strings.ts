@@ -8,7 +8,8 @@ export const en = {
   Flag: "Flag",
   Cancel: "Cancel",
   Create: "Create",
-  postFlag: null as null | string,
+  _postFlag: null as null | string,
+  _title: null as null | string,
 };
 
 export const it: typeof en = {
@@ -21,7 +22,8 @@ export const it: typeof en = {
   Flag: "Flag",
   Cancel: "Annulla",
   Create: "Crea",
-  postFlag: null,
+  _postFlag: null,
+  _title: null,
 };
 
 export const de: typeof en = {
@@ -34,7 +36,8 @@ export const de: typeof en = {
   Flag: "Flagge",
   Cancel: "Abbrechen",
   Create: "Erstellen",
-  postFlag: null,
+  _postFlag: null,
+  _title: null,
 };
 
 export const nl: typeof en = {
@@ -47,7 +50,8 @@ export const nl: typeof en = {
   Flag: "Vlag",
   Cancel: "Afbreken",
   Create: "Maak",
-  postFlag: null,
+  _postFlag: null,
+  _title: null,
 };
 
 export const pt: typeof en = {
@@ -60,7 +64,8 @@ export const pt: typeof en = {
   Flag: "Bandeira",
   Cancel: "Cancelar",
   Create: "Criar",
-  postFlag: null,
+  _postFlag: null,
+  _title: null,
 };
 
 export const es: typeof en = {
@@ -73,18 +78,38 @@ export const es: typeof en = {
   Flag: "Bandera",
   Cancel: "Cancelar",
   Create: "Crear",
-  postFlag: null,
+  _postFlag: null,
+  _title: null,
 };
 
-export const tr: typeof en = {
-  "You are gay": "Geysin",
-  "Open me": "Beni aç",
-  Congratulations: "Tebrikler",
-  "Now you are": "Bundan böyle sen",
-  "Write a custom letter": "Özel bir mektup yaz",
-  Name: "İsim",
-  Flag: "Etiket",
-  Cancel: "İptal",
-  Create: "Oluştur",
-  postFlag: "'sin",
-};
+import { turkishLowercaseI } from "./dictionary.ts";
+
+export const tr: typeof en = mapObj(
+  {
+    "You are gay": "Geysin",
+    "Open me": "Beni aç",
+    Congratulations: "Tebrikler",
+    "Now you are": "Bundan böyle sen",
+    "Write a custom letter": "Özel bir mektup yaz",
+    Name: "İsim",
+    Flag: "Etiket",
+    Cancel: "İptal",
+    Create: "Oluştur",
+    _postFlag: "'sin",
+    _title: "Geysin",
+  },
+  (v, k) => (k === "_title" ? v : turkishLowercaseI(v))
+);
+
+console.log(tr);
+
+function mapObj<Obj>(
+  obj: Obj,
+  fn: <K extends keyof Obj>(value: Obj[K], key: K) => Obj[K]
+) {
+  const res = {} as Obj;
+  for (const key of Object.keys(obj) as Array<keyof Obj>) {
+    res[key] = fn(obj[key], key);
+  }
+  return res;
+}

@@ -1,6 +1,6 @@
 import * as strings from "./strings.ts";
 import { urlParamsNames } from "./params.ts";
-import { flagsNormalization } from "./dictionary.ts";
+import { flagsNormalization, turkishLowercaseI } from "./dictionary.ts";
 
 const style = await Deno.readTextFile(
   new URL("../static/main.css", import.meta.url)
@@ -35,12 +35,12 @@ export function buildDocument(data: Data) {
 
         ${buildLanguagePicker(data)}
 
-        <div class="link-github">
+        <div class="link-github" lang="en">
           Source code
           <a href="https://github.com/nicolo-ribaudo/sei.gay" target="_blank">on GitHub</a>.
         </div>
 
-        <div class="link-me">
+        <div class="link-me" lang="en">
           Made by
           <a href="https://twitter.com/NicoloRibaudo" target="_blank">@NicoloRibaudo</a>.
         </div>
@@ -59,7 +59,9 @@ function buildHead({ lang }: Data) {
       <title>${strings[lang]["You are gay"]}!</title>
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="og:title" content="💌 ${strings[lang]["Open me"]}!" />
+      <meta property="og:title" content="💌 ${
+        strings[lang]._title || strings[lang]["Open me"]
+      }!" />
       <meta property="og:image" content="/og-image-${lang}.webp" />
       ${"" /* Otherwise Matrix (and probably others) use the page contents */}
       <meta property="og:description" content="&hellip;" />
@@ -80,7 +82,7 @@ function buildHead({ lang }: Data) {
 
 function buildLanguagePicker({ urlSearchParams, lang: currentLang }: Data) {
   return /* html */ `
-    <div class="language-picker">
+    <div class="language-picker" lang="en">
       ${Object.keys(strings)
         .filter((lang) => lang !== currentLang)
         .map((lang) => `<a href="/${lang}?${urlSearchParams}">${lang}</a>`)
@@ -122,11 +124,13 @@ function buildLetter(data: Data) {
 function buildLetterContents(data: Data) {
   const { lang } = data;
 
-  const sanitizedName = data.name ? ` ${sanitizeHTML(data.name)}` : "";
+  let sanitizedName = data.name ? ` ${sanitizeHTML(data.name)}` : "";
+  if (lang === "tr") sanitizedName = turkishLowercaseI(sanitizedName);
 
   const flag = data.flag || "gay";
   const fontSize = `clamp(1em, ${15 / flag.length}em, 5em)`;
-  const sanitizedFlag = sanitizeHTML(flag);
+  let sanitizedFlag = sanitizeHTML(flag);
+  if (lang === "tr") sanitizedFlag = turkishLowercaseI(sanitizedFlag);
   const lowercaseFlag = flag.toLowerCase();
   let flagClass = "";
   if (flag && Object.hasOwn(flagsNormalization, lowercaseFlag)) {
@@ -144,8 +148,8 @@ function buildLetterContents(data: Data) {
           ${sanitizedFlag}
         </span>
         ${
-          strings[lang].postFlag
-            ? `<span class="flag ${flagClass}">'sin</span>`
+          strings[lang]._postFlag
+            ? `<span class="flag ${flagClass}">${strings[lang]._postFlag}</span>`
             : ""
         }
       </p>
