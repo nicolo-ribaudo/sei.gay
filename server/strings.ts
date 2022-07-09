@@ -101,8 +101,6 @@ export const tr: typeof en = mapObj(
   (v, k) => (k === "_title" ? v : turkishLowercaseI(v))
 );
 
-console.log(tr);
-
 function mapObj<Obj>(
   obj: Obj,
   fn: <K extends keyof Obj>(value: Obj[K], key: K) => Obj[K]

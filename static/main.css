@@ -627,6 +627,7 @@ body {
 
 .control {
   opacity: 0;
+  position: fixed;
 }
 
 #open:not(:checked) ~ #create,
