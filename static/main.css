@@ -622,13 +622,16 @@ body {
   opacity: 0;
 }
 
-
-body:has(#create:checked) #open,
 #open:not(:checked) ~ #create,
 #open:not(:checked) ~ * .letter label,
 #open:checked ~ * .letter label.reverse-hidden,
 #create:not(:checked) ~ * .dialog-contents input,
+#create:not(:checked) ~ * .dialog-contents #close-create,
 #create:checked ~ * .dialog-contents .reverse-hidden {
+  display: none;
+}
+
+body:has(#create:checked) #open {
   display: none;
 }
 
@@ -637,11 +640,11 @@ body:has(#create:checked) #open,
   display: block;
 }
 
-#open:focus ~ * .envelope-container-bottom {
-  outline: black dashed 3px;
-}
-
+#open:focus ~ * .envelope-container-bottom,
 #create:focus:not(:checked) ~ * #open-create,
-#create:focus:checked ~ * #close-create {
-  outline: auto;
+#create:focus:checked ~ * #close-create,
+input:focus,
+.button:focus,
+a:focus {
+  outline: black dashed 3px;
 }
