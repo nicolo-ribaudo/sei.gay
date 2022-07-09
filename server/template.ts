@@ -142,9 +142,7 @@ function buildLetterContents(data: Data) {
       <p>
         ${strings[lang]["Congratulations"]}${sanitizedName}!<br />
         ${strings[lang]["Now you are"]}<br />
-        <span class="flag ${flagClass}" style="font-size: ${fontSize}">
-          ${sanitizedFlag}
-        </span>
+        <span class="flag ${flagClass}" style="font-size: ${fontSize}">${sanitizedFlag}</span>
         ${
           strings[lang]._postFlag
             ? `<span class="flag ${flagClass}">${strings[lang]._postFlag}</span>`
