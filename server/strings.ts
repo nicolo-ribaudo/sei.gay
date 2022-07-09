@@ -1,6 +1,10 @@
+function r(html: string, raw: string = html) {
+  return { html, raw };
+}
+
 export const en = {
-  "You are gay": "You are gay",
-  "Open me": "Open me",
+  "You are gay": r("You are gay"),
+  "Open me": r("Open me"),
   Congratulations: "Congratulations",
   "Now you are": "Now you are",
   "Write a custom letter": "Write a custom letter",
@@ -9,12 +13,11 @@ export const en = {
   Cancel: "Cancel",
   Create: "Create",
   _postFlag: null as null | string,
-  _title: null as null | string,
 };
 
 export const it: typeof en = {
-  "You are gay": "Sei gay",
-  "Open me": "Aprimi",
+  "You are gay": r("Sei gay"),
+  "Open me": r("Aprimi"),
   Congratulations: "Congratulazioni",
   "Now you are": "D'ora in poi sarai",
   "Write a custom letter": "Crea una lettera personalizzata",
@@ -23,12 +26,11 @@ export const it: typeof en = {
   Cancel: "Annulla",
   Create: "Crea",
   _postFlag: null,
-  _title: null,
 };
 
 export const de: typeof en = {
-  "You are gay": "Du bist gay",
-  "Open me": "Öffne Mich",
+  "You are gay": r("Du bist gay"),
+  "Open me": r("Öffne Mich"),
   Congratulations: "Glückwunsch",
   "Now you are": "Ab jetzt bist du",
   "Write a custom letter": "Erstelle einen eignen Brief",
@@ -37,12 +39,11 @@ export const de: typeof en = {
   Cancel: "Abbrechen",
   Create: "Erstellen",
   _postFlag: null,
-  _title: null,
 };
 
 export const nl: typeof en = {
-  "You are gay": "Jij bent gay",
-  "Open me": "Open mij",
+  "You are gay": r("Jij bent gay"),
+  "Open me": r("Open mij"),
   Congratulations: "Gefeliciteerd",
   "Now you are": "Vanaf nu ben je",
   "Write a custom letter": "Maak je eigen brief",
@@ -51,12 +52,11 @@ export const nl: typeof en = {
   Cancel: "Afbreken",
   Create: "Maak",
   _postFlag: null,
-  _title: null,
 };
 
 export const pt: typeof en = {
-  "You are gay": "Você é gay",
-  "Open me": "Abra-me",
+  "You are gay": r("Você é gay"),
+  "Open me": r("Abra-me"),
   Congratulations: "Parabéns",
   "Now you are": "Agora você é",
   "Write a custom letter": "Escreva uma carta customizada",
@@ -65,12 +65,11 @@ export const pt: typeof en = {
   Cancel: "Cancelar",
   Create: "Criar",
   _postFlag: null,
-  _title: null,
 };
 
 export const es: typeof en = {
-  "You are gay": "¡Eres gay",
-  "Open me": "¡Abrir",
+  "You are gay": r("¡Eres gay"),
+  "Open me": r("¡Abrir"),
   Congratulations: "¡Felicitaciones",
   "Now you are": "Ahora eres",
   "Write a custom letter": "¡Escribe una carta personalizada",
@@ -79,35 +78,21 @@ export const es: typeof en = {
   Cancel: "Cancelar",
   Create: "Crear",
   _postFlag: null,
-  _title: null,
 };
 
 import { turkishLowercaseI } from "./dictionary.ts";
 
-export const tr: typeof en = mapObj(
-  {
-    "You are gay": "Geysin",
-    "Open me": "Beni aç",
-    Congratulations: "Tebrikler",
-    "Now you are": "Bundan böyle sen",
-    "Write a custom letter": "Özel bir mektup yaz",
-    Name: "İsim",
-    Flag: "Etiket",
-    Cancel: "İptal",
-    Create: "Oluştur",
-    _postFlag: "'sin",
-    _title: "Geysin",
-  },
-  (v, k) => (k === "_title" ? v : turkishLowercaseI(v))
-);
+export const tr: typeof en = {
+  "You are gay": r(turkishLowercaseI("Geysin"), "Geysin"),
+  "Open me": r(turkishLowercaseI("Beni aç"), "Beni aç"),
+  Congratulations: turkishLowercaseI("Tebrikler"),
+  "Now you are": turkishLowercaseI("Bundan böyle sen"),
+  "Write a custom letter": turkishLowercaseI("Özel bir mektup yaz"),
+  Name: turkishLowercaseI("İsim"),
+  Flag: turkishLowercaseI("Etiket"),
+  Cancel: turkishLowercaseI("İptal"),
+  Create: turkishLowercaseI("Oluştur"),
+  _postFlag: turkishLowercaseI("'sin"),
+};
 
-function mapObj<Obj>(
-  obj: Obj,
-  fn: <K extends keyof Obj>(value: Obj[K], key: K) => Obj[K]
-) {
-  const res = {} as Obj;
-  for (const key of Object.keys(obj) as Array<keyof Obj>) {
-    res[key] = fn(obj[key], key);
-  }
-  return res;
-}
+console.log(tr);

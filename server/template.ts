@@ -56,12 +56,10 @@ function buildHead({ lang }: Data) {
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>${strings[lang]["You are gay"]}!</title>
+      <title>${strings[lang]["You are gay"].raw}!</title>
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="og:title" content="💌 ${
-        strings[lang]._title || strings[lang]["Open me"]
-      }!" />
+      <meta property="og:title" content="💌 ${strings[lang]["Open me"].raw}!" />
       <meta property="og:image" content="/og-image-${lang}.webp" />
       ${"" /* Otherwise Matrix (and probably others) use the page contents */}
       <meta property="og:description" content="&hellip;" />
@@ -103,7 +101,7 @@ function buildEnvelopeParts({ lang }: Data) {
     <div class="envelope-part-container envelope-container-top">
       <div class="envelope-part envelope-top-backface"></div>
       <div class="envelope-part envelope-top">
-        <p style="margin-top: 1em">${strings[lang]["Open me"]}!</p>
+        <p style="margin-top: 1em">${strings[lang]["Open me"].html}!</p>
       </div>
     </div>
   `;
