@@ -143,6 +143,11 @@ function buildLetterContents(data: Data) {
         <span class="flag ${flagClass}" style="font-size: ${fontSize}">
           ${sanitizedFlag}
         </span>
+        ${lang === "tr" ? `
+          <span class="flag ${flagClass}" style="font-size: 72px">
+            'sin
+          </span>
+        ` : ""}
       </p>
       <p class="button-write-letter-container">
         <label for="create">

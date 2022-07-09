@@ -6,6 +6,7 @@
 - English version: [sei.gay/en](https://sei.gay/en)
 - German version: [sei.gay/de](https://sei.gay/de)
 - Dutch version: [sei.gay/nl](https://sei.gay/nl)
+- Turkish version: [sei.gay/tr](https://sei.gay/tr)
 
 ## Contributing
 

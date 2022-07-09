@@ -45,3 +45,16 @@ export const nl: typeof en = {
   Cancel: "Afbreken",
   Create: "Maak",
 };
+
+export const tr: typeof en = {
+  "You are gay": "Geysin",
+  "Open me": "Beni aç",
+  Congratulations: "Tebrikler",
+  "Now you are": "Bundan böyle sen",
+  "Write a custom letter": "Özel bir mektup yaz",
+  Name: "İsim",
+  Flag: "Etiket",
+  Cancel: "İptal",
+  Create: "Oluştur",
+};
+
