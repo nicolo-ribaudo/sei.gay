@@ -6,11 +6,11 @@ export const urlParamsNames = {
 } as const;
 
 export function encode(name: string | undefined, flag: string | undefined) {
-  return btoa(`${escapeColon(name ?? "")}:${escapeColon(flag ?? "")}`);
+  return btoa(unescape(encodeURIComponent(`${escapeColon(name ?? "")}:${escapeColon(flag ?? "")}`)));
 }
 
 export function decode(encoded: string) {
-  return atob(encoded)
+  return decodeURIComponent(escape(atob(encoded))
     .split(/(?<!:):(?!:)/)
     .map(unescapeColon);
 }
