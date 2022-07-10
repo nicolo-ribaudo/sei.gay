@@ -10,7 +10,7 @@ export function encode(name: string | undefined, flag: string | undefined) {
 }
 
 export function decode(encoded: string) {
-  return decodeURIComponent(escape(atob(encoded))
+  return decodeURIComponent(escape(atob(encoded)))
     .split(/(?<!:):(?!:)/)
     .map(unescapeColon);
 }
