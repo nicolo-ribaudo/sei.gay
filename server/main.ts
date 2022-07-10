@@ -1,48 +1,52 @@
 import { serve } from "https://deno.land/std@0.147.0/http/server.ts";
+import { extname } from "https://deno.land/std@0.147.0/path/mod.ts";
 
 import { buildDocument } from "./template.ts";
 import { encode, decode, urlParamsNames } from "./params.ts";
 import * as strings from "./strings.ts";
 
+type MyMap = new <K>(contents: readonly (readonly [K, string])[]) => {
+  get(key: K): string;
+};
+type MySet<K> = new (contents: K[]) => { has(val: unknown): val is K };
+type MyExtname = <Ext extends string>(
+  pathname: `${string}.${Ext}`
+) => `.${Ext}`;
+
+const contentTypes = new (Map as MyMap)([
+  [".css", "text/css"],
+  [".woff2", "font/woff2"],
+  [".webp", "image/webp"],
+] as const);
+
+type StaticExt = Parameters<typeof contentTypes.get>[0];
+
+const staticFiles = new (Set as any as MySet<`${string}${StaticExt}`>)([
+  "/main.css",
+  "/Titan-One.woff2",
+  "/Titan-One-ext.woff2",
+  "/Titan-One-custom.woff2",
+  "/og-image-it.webp",
+  "/og-image-en.webp",
+]);
+
 serve(async (req) => {
   const { pathname, searchParams, origin } = new URL(req.url);
 
-  if (pathname === "/main.css") {
-    const file = await Deno.readFile(
-      new URL("../static/main.css", import.meta.url)
-    );
-
-    return new Response(file, {
-      headers: { "content-type": "text/css" },
-    });
-  }
-
-  if (
-    pathname === "/Titan-One.woff2" ||
-    pathname === "/Titan-One-ext.woff2" ||
-    pathname === "/Titan-One-custom.woff2"
-  ) {
+  if (staticFiles.has(pathname)) {
     const file = await Deno.readFile(
       new URL(`../static${pathname}`, import.meta.url)
     );
 
     return new Response(file, {
-      headers: { "content-type": "font/woff2" },
-    });
-  }
-
-  if (pathname === "/og-image-it.webp" || pathname === "/og-image-en.webp") {
-    const file = await Deno.readFile(
-      new URL(`../static/${pathname}`, import.meta.url)
-    );
-
-    return new Response(file, {
-      headers: { "content-type": "image/webp" },
+      headers: {
+        "content-type": contentTypes.get((extname as MyExtname)(pathname)),
+      },
     });
   }
 
   const validLangs = Object.keys(strings) as Array<keyof typeof strings>;
-  const lang = validLangs.find(lang => pathname === `/${lang}`);
+  const lang = validLangs.find((lang) => pathname === `/${lang}`);
 
   if (pathname === "/" || lang !== undefined) {
     if (searchParams.has(urlParamsNames.encode)) {

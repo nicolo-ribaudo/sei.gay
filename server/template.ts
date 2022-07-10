@@ -60,7 +60,10 @@ function buildHead({ lang }: Data) {
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="og:title" content="💌 ${strings[lang]["Open me"].raw}!" />
-      <meta property="og:image" content="/og-image-${lang}.webp" />
+      <meta
+        property="og:image"
+        content="/og-image-${lang === "it" ? "it" : "en"}.webp"
+      />
       ${"" /* Otherwise Matrix (and probably others) use the page contents */}
       <meta property="og:description" content="&hellip;" />
 
