@@ -2,6 +2,7 @@
 
 > Your crush is straight and you need to invite them to be gay? You friend just came out as bi and you want to congratulate them? [sei.gay](https://sei.gay/en) is exactly what you are looking for!
 
+- Afrikaans version: [sei.gay/af](https://sei.gay/af)
 - Dutch version: [sei.gay/nl](https://sei.gay/nl)
 - English version: [sei.gay/en](https://sei.gay/en)
 - German version: [sei.gay/de](https://sei.gay/de)
@@ -13,6 +14,7 @@
 ## Contributing
 
 To develop locally, install [Deno](https://deno.land/) and run
+
 ```
 deno task serve
 ```
