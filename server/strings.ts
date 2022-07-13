@@ -80,6 +80,19 @@ export const es: typeof en = {
   _postFlag: null,
 };
 
+export const af: typeof en = {
+  "You are gay": r("Jy is gay"),
+  "Open me": r("Maak my oop"),
+  Congratulations: "Geluk",
+  "Now you are": "Nou is jy",
+  "Write a custom letter": "Skryf 'n persoonlike brief",
+  Name: "Naam",
+  Flag: "Vlag",
+  Cancel: "Kanseleer",
+  Create: "Skep",
+  _postFlag: null,
+}
+
 import { turkishLowercaseI } from "./dictionary.ts";
 
 export const tr: typeof en = {
