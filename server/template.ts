@@ -93,6 +93,8 @@ function buildLanguagePicker({ urlSearchParams, lang: currentLang }: Data) {
 }
 
 function buildEnvelopeParts({ lang }: Data) {
+  const fontSize = 18 / strings[lang]["Open me"].raw.length;
+
   return /* html */ `
     <div class="envelope-part-container envelope-container-static">
       <div class="envelope-part envelope-left"></div>
@@ -104,7 +106,9 @@ function buildEnvelopeParts({ lang }: Data) {
     <div class="envelope-part-container envelope-container-top">
       <div class="envelope-part envelope-top-backface"></div>
       <div class="envelope-part envelope-top">
-        <p style="margin-top: 1em">${strings[lang]["Open me"].html}!</p>
+        <p style="margin-top: 1em; font-size: clamp(1rem, ${fontSize}rem, 2rem)">
+          ${strings[lang]["Open me"].html}!
+        </p>
       </div>
     </div>
   `;

@@ -91,7 +91,7 @@ export const af: typeof en = {
   Cancel: "Kanseleer",
   Create: "Skep",
   _postFlag: null,
-}
+};
 
 import { turkishLowercaseI } from "./dictionary.ts";
 
@@ -107,5 +107,3 @@ export const tr: typeof en = {
   Create: turkishLowercaseI("Oluştur"),
   _postFlag: turkishLowercaseI("'sin"),
 };
-
-console.log(tr);
